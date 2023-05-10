@@ -1,0 +1,38 @@
+[tool.black]
+target-version = ["py39", "py310"]
+line-length = 120
+extend-exclude = '''
+(
+    ^/sdlf-foundations/scripts/deequ/
+  | ^/sdlf-utils/
+)
+'''
+
+[tool.ruff]
+extend-select = ["I", "PL", "W"]
+ignore = ["PLR0912", "PLR0913", "PLR0915"]
+fixable = ["I001"]
+extend-exclude = ["sdlf-foundations/scripts/deequ", "sdlf-utils"]
+line-length = 120
+target-version = "py39"
+
+[tool.pylint.main]
+py-version = "3.9"
+ignore-paths = ["^/sdlf-foundations/scripts/deequ/", "^/sdlf-utils/"]
+jobs = 0
+
+[tool.pylint.format]
+max-line-length = 120
+max-module-lines = 1500
+
+[tool.pylint.logging]
+# The type of string formatting that logging methods do. `old` means using %
+# formatting, `new` is for `{}` formatting.
+logging-format-style = "new"
+
+# Logging modules to check that the string format arguments are in logging
+# function parameter format.
+logging-modules = ["logging", "datalake_library.commons"]
+
+[tool.pylint.similarities]
+min-similarity-lines = 10
